@@ -1,0 +1,95 @@
+client_name: Acme SaaS
+slug: acme-saas
+
+icp:
+  titres_cibles:
+    - Directeur Commercial
+    - Head of Sales
+    - VP Sales
+  seniorite:
+    - Director
+    - VP
+  secteurs_activite:
+    - SaaS B2B
+    - Logiciels entreprise
+  taille_entreprise:
+    - 11-50
+    - 51-200
+  localisation:
+    - France
+  technologies_stack:
+    - Salesforce
+    - HubSpot
+  annees_experience_min: 5
+  signaux_intention_cles:
+    - parle de recrutement commercial
+    - mentionne scaling equipe
+    - poste sur la prospection B2B
+  titres_a_exclure:
+    - Freelance
+    - Etudiant
+    - Consultant independant
+  secteurs_a_exclure:
+    - MLM
+    - Immobilier
+
+offre:
+  nom_offre: SDR IA LinkedIn
+  probleme_resolu:
+    - Manque de prospects qualifies reguliers
+    - Temps perdu sur la prospection manuelle LinkedIn
+  benefice_principal: 15 prospects qualifies par jour sans effort manuel
+  mots_cles_intention:
+    - prospection
+    - cold outreach
+    - pipeline
+    - leads B2B
+  concurrents_ou_alternatives:
+    - Lemlist
+    - LaGrowthMachine
+    - Waalaxy
+    - PhantomBuster
+
+bereach:
+  api_key: ${BEREACH_API_KEY}
+  base_url: https://api.bereach.ai
+  timeout_seconds: 30
+  max_retries: 3
+  jitter_min_seconds: 3
+  jitter_max_seconds: 8
+  delay_between_connections_min_seconds: 5
+  delay_between_connections_max_seconds: 10
+  daily_connection_limit: 12
+  weekly_connection_limit: 60
+  daily_profile_visit_limit: 60
+  working_hours_only: true
+  weekend_pause: true
+  dry_run: false
+
+google:
+  service_account_file: ${GOOGLE_APPLICATION_CREDENTIALS}
+  spreadsheet_id: ""
+  spreadsheet_title: Acme SaaS - CRM PROSPECTION
+  drive_folder_name: Client-CRM
+  prospects_tab: PROSPECTS
+  rejected_tab: REJETES
+
+delivery:
+  channel: telegram
+  telegram_bot_token: ${TELEGRAM_BOT_TOKEN}
+  telegram_chat_id: ""
+  discord_webhook_url: ${DISCORD_WEBHOOK_URL}
+
+llm:
+  provider: openrouter
+  api_key: ${OPENROUTER_API_KEY}
+  base_url: https://openrouter.ai/api/v1
+  model: qwen/qwen3-coder:free
+  temperature: 0.1
+  enabled: true
+
+hermes:
+  profile_slug: acme-saas
+  install_skills: true
+  cron_schedule: "0 6 * * 1-5"
+  delivery_target: telegram

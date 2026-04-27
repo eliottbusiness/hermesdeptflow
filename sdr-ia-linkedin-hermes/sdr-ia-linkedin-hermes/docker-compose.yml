@@ -1,0 +1,9 @@
+services:
+  sdr-ai:
+    build: .
+    env_file: .env
+    volumes:
+      - ./configs:/app/configs
+      - ./runs:/app/runs
+      - ${GOOGLE_APPLICATION_CREDENTIALS:-./secrets/service-account.json}:${GOOGLE_APPLICATION_CREDENTIALS:-/app/secrets/service-account.json}:ro
+    command: ["sdr-ai", "run", "--config", "configs/client.example.yaml", "--limit", "5", "--no-send"]
